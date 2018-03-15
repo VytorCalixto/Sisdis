@@ -1,17 +1,17 @@
-all: tempo
+all: tarefa1
 
-tempo: tempo.o smpl.o rand.o
-	$(LINK.c) -o $@ -Bstatic tempo.o smpl.o rand.o -lm
+tarefa1: tarefa1.o smpl.o rand.o
+	$(LINK.c) -o $@ -Bstatic tarefa1.o smpl.o rand.o -lm
 
 smpl.o: smpl.c smpl.h
 	$(COMPILE.c)  -g smpl.c
 
-tempo.o: tempo.c smpl.h
-	$(COMPILE.c) -g  tempo.c
+tarefa1.o: tarefa1.c smpl.h
+	$(COMPILE.c) -g  tarefa1.c
 
 rand.o: rand.c
 	$(COMPILE.c) -g rand.c
 
 clean:
-	$(RM) *.o tempo relat saida
+	$(RM) *.o tarefa1 relat saida
 
