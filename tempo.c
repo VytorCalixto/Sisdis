@@ -16,7 +16,7 @@ typedef struct {
 tnodo *nodo;
 
 int main(int argc, char* argv[]) {
-    static int N, token, evento, r, i;
+    static int N, token, event, r, i;
     static char fa_name[5];
 
     if(argc != 2) {
@@ -35,37 +35,40 @@ int main(int argc, char* argv[]) {
         sprintf(fa_name, "%d", i);
         nodo[i].id = facility(fa_name, 1);
 
-        // Schedule inicial
-        for (i = 0; i < N; ++i) {
-            schedule(TEST, 30.0, i);
-        }
-        schedule(FAULT, 31.0, 1);
-        schedule(REPAIR, 59.0, 1);
+    }
 
-        while(time() < 130.0) {
-            cause(&event, &token);
-            switch(event) {
-                case TEST:
-                    if(status(nodo[token].id) != 0) break; //falho!
-                    printf("O nodo %d vai testar no tempo %5.1f\n", token, time());
-                    schedule(TEST, 30.0, token);
-                    break;
-                case FAULT:
-                    r = request(nodo[token].id, token, 0);
-                    if(r != 0) {
-                        puts("Impossível falhar");
-                        exit(1);
-                    }
-                    printf("O nodo %d falhou no tempo %5.1f\n", token, time());
-                    break;
-                case REPAIR:
-                    release(nodo[token].id, token);
-                    printf("O nodo %d recuperou no tempo %5.1f\n", token, time());
-                    schedule(TEST, 30.0, token);
-                    break;
-            }
+        // Schedule inicial
+    for (i = 0; i < N; ++i) {
+        schedule(TEST, 30.0, i);
+    }
+    schedule(FAULT, 31.0, 1);
+    schedule(REPAIR, 59.0, 1);
+
+    while(time() < 130.0) {
+        cause(&event, &token);
+        switch(event) {
+            case TEST:
+                if(status(nodo[token].id) != 0) break; //falho!
+                printf("O nodo %d vai testar no tempo %5.1f\n", token, time());
+                schedule(TEST, 30.0, token);
+                break;
+            case FAULT:
+                r = request(nodo[token].id, token, 0);
+                if(r != 0) {
+                    puts("Impossível falhar");
+                    exit(1);
+                }
+                printf("O nodo %d falhou no tempo %5.1f\n", token, time());
+                break;
+            case REPAIR:
+                release(nodo[token].id, token);
+                printf("O nodo %d recuperou no tempo %5.1f\n", token, time());
+                schedule(TEST, 30.0, token);
+                break;
         }
     }
+    
+    free(nodo);
 
     return 0;
 }
