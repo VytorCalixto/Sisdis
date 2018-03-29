@@ -1,17 +1,17 @@
-all: tarefa4
+all: adsd
 
-tarefa4: tarefa4.o smpl.o rand.o
-	$(LINK.c) -o $@ -Bstatic tarefa4.o smpl.o rand.o -lm
+adsd: adsd.o smpl.o rand.o
+	$(LINK.c) -o $@ -Bstatic adsd.o smpl.o rand.o -lm
 
 smpl.o: smpl.c smpl.h
 	$(COMPILE.c)  -g smpl.c
 
-tarefa4.o: tarefa4.c smpl.h
-	$(COMPILE.c) -g  tarefa4.c
+adsd.o: adsd.c smpl.h
+	$(COMPILE.c) -g  adsd.c
 
 rand.o: rand.c
 	$(COMPILE.c) -g rand.c
 
 clean:
-	$(RM) *.o tarefa4 relat saida
+	$(RM) *.o adsd relat saida
 
