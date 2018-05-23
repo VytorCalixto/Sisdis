@@ -1,0 +1,39 @@
+- Nodo 0 irá testar nodos 1, 2, em  20.0
+	STATE [ 0 0 0 0 ]
+- Nodo 1 irá testar nodos 0, 3, em  20.0
+	STATE [ 0 0 0 0 ]
+- Nodo 2 irá testar nodos 0, 3, em  20.0
+	STATE [ 0 0 0 0 ]
+- Nodo 3 irá testar nodos 1, 2, em  20.0
+	STATE [ 0 0 0 0 ]
+
+===FALHA NO NODO 1 EM  22.0===
+
+- Nodo 0 irá testar nodos 1, 2, em  40.0
+	STATE [ 0 1 0 0 ]
+- Nodo 2 irá testar nodos 0, 3, em  40.0
+	STATE [ 0 1 0 0 ]
+- Nodo 3 irá testar nodos 1, 2, em  40.0
+	STATE [ 0 1 0 0 ]
+****************************************************************
+3 testes executados até diagnóstico
+===RECUPERAÇÃO DO NODO 1 em  42.0===
+
+- Nodo 0 irá testar nodos 1, 2, 3, em  60.0
+	STATE [ 0 2 0 0 ]
+- Nodo 2 irá testar nodos 0, 3, em  60.0
+	STATE [ 0 2 0 0 ]
+- Nodo 3 irá testar nodos 1, 2, em  60.0
+	STATE [ 0 2 0 0 ]
+- Nodo 1 irá testar nodos 0, 3, em  62.0
+	STATE [ 0 2 0 0 ]
+****************************************************************
+4 testes executados até diagnóstico
+===FALHA NO NODO 3 EM  64.0===
+
+- Nodo 0 irá testar nodos 1, 2, em  80.0
+	STATE [ 0 2 0 0 ]
+- Nodo 2 irá testar nodos 0, 3, em  80.0
+	STATE [ 0 2 0 1 ]
+- Nodo 1 irá testar nodos 0, 3, em  82.0
+	STATE [ 0 2 0 1 ]
